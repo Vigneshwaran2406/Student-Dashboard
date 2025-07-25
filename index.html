@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Student Dashboard Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Student Dashboard Login</h1>
+    <div class="form-container">
+      <h3>Login with Google to Continue</h3>
+      <button id="googleLoginBtn">Sign in</button>
+    </div>
+
+    <!-- Firebase Login Script -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAZlwqeVFzVQZf-dmp6Vglcjx9zeKE0Ikc",
+        authDomain: "sports-f6789.firebaseapp.com",
+        projectId: "sports-f6789",
+        storageBucket: "sports-f6789.firebasestorage.app",
+        messagingSenderId: "1089375819705",
+        appId: "1:1089375819705:web:af7492d1c285e78788c868",
+        measurementId: "G-QJE2HPWQ9Y"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+
+      // Login button
+      const loginBtn = document.getElementById("googleLoginBtn");
+      loginBtn.addEventListener("click", async () => {
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          const loggedUser = {
+            username: user.displayName,
+            email: user.email
+          };
+          localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+          window.location.href = "home.html";
+        } catch (error) {
+          alert("Login failed: " + error.message);
+          console.error(error);
+        }
+      });
+    </script>
+</html>

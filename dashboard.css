@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-image: linear-gradient(rgb(68, 0, 255), rgb(255, 0, 221));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+    text-align: center;
+    overflow-y: auto;
+}
+
+/* Styles for the Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.navbar .nav {
+    padding: 10px 20px;
+    background-image: linear-gradient(rgb(248, 58, 90), rgb(240, 2, 240));
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: transform 0.2s ease, background-image 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+}
+
+.navbar .nav:hover {
+    transform: translateY(-2px);
+    background-image: linear-gradient(rgb(255, 0, 100), rgb(255, 0, 255));
+}
+
+/* Style for the active navigation button */
+.navbar .nav.active {
+    background-image: linear-gradient(rgb(255, 0, 100), rgb(255, 0, 255));
+    box-shadow: 0 0 15px rgba(255, 0, 100, 0.7);
+    transform: scale(1.05);
+}
+
+.dashboard-container {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    flex-grow: 1;
+}
+
+/* Styles for content sections (e.g., Dashboard Home, Subject Page) */
+.content-section {
+    display: none; /* Hidden by default */
+    width: 100%; /* Take full width of parent */
+    flex-direction: column; /* Content inside sections stacks vertically */
+    align-items: center;
+    gap: 25px; /* Gap between major elements within a section (filters, table, cards) */
+    padding: 25px; /* Add padding to the content section itself */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.content-section.active {
+    display: flex; /* Show the active section */
+}
+
+.section-title {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+#welcomeMessage {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card ul li {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.clock {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#quoteText {
+    font-size: 1.3em;
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.author {
+    font-size: 1em;
+    font-weight: 500;
+    color: #eee;
+}
+
+/* Styles for filters container */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filters-container label {
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.filters-container select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.filters-container select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Styles for the subject table */
+.subject-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+}
+
+#subjectsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#subjectsTable th,
+#subjectsTable td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#subjectsTable th {
+    background-color: rgba(255, 255, 255, 0.25);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#subjectsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#subjectsTable tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px 15px;
+        max-width: 90%;
+    }
+    .navbar .nav {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+    .section-title, #welcomeMessage {
+        font-size: 2em;
+    }
+    .clock {
+        font-size: 2em;
+    }
+    #quoteText {
+        font-size: 1em;
+    }
+    .card {
+        padding: 20px;
+    }
+    #subjectsTable th,
+    #subjectsTable td {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .filters-container select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar .nav {
+        width: 80%;
+    }
+    .section-title, #welcomeMessage {
+        font-size: 1.8em;
+    }
+}

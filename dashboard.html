@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" /> 
+</head>
+<body>
+    <div class="navbar">
+            <button class="nav active" data-target="dashboard-home-content">Dashboard Home</button>
+            <button class="nav" data-target="subject-content">Subject</button>
+            <button class="nav" data-target="progress-content">Progress</button>
+            <button class="nav" data-target="todo-content">Todo</button>
+    </div>
+
+    <div class="dashboard-container">
+        <div id="dashboard-home-content" class="content-section active"> <h1 id="welcomeMessage">Welcome, Student!</h1>
+
+            <div class="card">
+                <h2>Current Time</h2>
+                <p id="realTimeClock" class="clock"></p>
+            </div>
+
+            <div class="card">
+                <h2>Daily Motivation</h2>
+                <p id="quoteText"></p>
+                <p id="quoteAuthor" class="author"></p>
+            </div>
+        </div>
+
+        <div id="subject-content" class="content-section">
+            <h1 class="section-title">My Subjects</h1>
+
+            <div class="filters-container">
+                <label for="dayFilter">Filter by Day:</label>
+                <select id="dayFilter">
+                    <option value="all">All Days</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+
+                <label for="subjectFilter">Filter by Subject:</label>
+                <select id="subjectFilter">
+                    <option value="all">All Subjects</option>
+                    </select>
+            </div>
+
+            <div class="subject-table-container card">
+                <table id="subjectsTable">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Teacher</th>
+                            <th>Day</th>
+                            <th>Time Slot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="progress-content" class="content-section">
+            <h1 class="section-title">Your Progress</h1>
+            <div class="card">
+                <h2>Overall GPA</h2>
+                <p style="font-size: 2em; font-weight: bold;">3.8 / 4.0</p>
+            </div>
+            <div class="card">
+                <h2>Learning Hours This Week</h2>
+                <p style="font-size: 2em; font-weight: bold;">12 hours</p>
+                <p>Keep up the great work!</p>
+            </div>
+        </div>
+
+        <div id="todo-content" class="content-section">
+            <h1 class="section-title">Your To-Do List</h1>
+            <div class="card">
+                <h2>Today's Tasks</h2>
+                <ul>
+                    <li>Complete Math Homework</li>
+                    <li>Read Chapter 3 Science</li>
+                    <li>Prepare for English Presentation</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Upcoming Deadlines</h2>
+                <ul>
+                    <li>Science Project: July 10</li>
+                    <li>History Essay: July 18</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

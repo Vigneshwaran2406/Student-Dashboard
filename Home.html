@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+    <div class="main-wrapper">
+
+        <!-- NAVBAR on top -->
+        <nav class="navbar">
+            <div class="profile-info">
+                <span id="profileUsername">Username</span> | 
+                <span id="profileEmail">email@example.com</span>
+            </div>
+            <button id="logoutBtn">Logout</button>
+        </nav>
+
+        <!-- CONTENT CONTAINER: sidebar + main content -->
+        <div class="content-container">
+            <aside class="sidebar">
+                <button class="nav active" data-target="home-content">Home</button>
+                <button class="nav" data-target="subject-content">Subject</button>
+                <button class="nav" data-target="progress-content">Progress</button>
+                <button class="nav" data-target="todo-content">Todo</button>
+            </aside>
+            
+            <main class="content-area"> 
+                <div class="dashboard-container">
+
+                    <div id="home-content" class="content-section active">
+                        <h1 id="welcomeMessage">Welcome, Student!</h1>
+
+                        <div class="card">
+                            <h2>Current Time</h2>
+                            <p id="realTimeClock" class="clock"></p>
+                        </div>
+
+                        <div class="card">
+                            <h2>Daily Motivation</h2>
+                            <p id="quoteText"></p>
+                            <p id="quoteAuthor" class="author"></p>
+                        </div>
+                    </div>
+
+                    <div id="subject-content" class="content-section">
+                        <h1 class="section-title">Subjects</h1>
+
+                        <div class="filters-container">
+                            <label for="dayFilter">Filter by Day:</label>
+                            <select id="dayFilter">
+                                <option value="all">All Days</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                            </select>
+
+                            <label for="subjectFilter">Filter by Subject:</label>
+                            <select id="subjectFilter">
+                                <option value="all">All Subjects</option>
+                            </select>
+                        </div>
+
+                        <div class="subject-table-container card">
+                            <table id="subjectsTable">
+                                <thead>
+                                    <tr id="heading">
+                                        <th>Subject</th>
+                                        <th>Teacher</th>
+                                        <th>Day</th>
+                                        <th>Time Slot</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodycontent">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="progress-content" class="content-section">
+                        <h1 class="section-title">Class Progress</h1>
+
+                        <div class="progress-card card">
+                            <h2>Python</h2>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 80%;"></div>
+                                <span class="progress-text">80%</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-card card">
+                            <h2>Data Structure</h2>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 60%;"></div>
+                                <span class="progress-text">60%</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-card card">
+                            <h2>Statistics</h2>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 40%;"></div>
+                                <span class="progress-text">40%</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-card card">
+                            <h2>Machine Learning</h2>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 70%;"></div>
+                                <span class="progress-text">70%</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-card card">
+                            <h2>AI</h2>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 65%;"></div>
+                                <span class="progress-text">65%</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-card card">
+                            <h2>Data Science</h2>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 80%;"></div>
+                                <span class="progress-text">80%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="todo-content" class="content-section">
+                        <h1 class="section-title">My To-Do List</h1>
+
+                        <div class="todo-input-container card">
+                            <input type="text" id="todoInput" placeholder="Add a new task...">
+                            <button id="addTaskButton">Add Task</button>
+                        </div>
+                        <ul id="todoList" class="card">
+                           
+                        </ul>
+                    </div>
+
+                </div> 
+            </main>
+        </div>
+    </div>
+ <!-- Firebase SDK (only if not already added) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAZlwqeVFzVQZf-dmp6Vglcjx9zeKE0Ikc",
+    authDomain: "sports-f6789.firebaseapp.com",
+    projectId: "sports-f6789",
+    storageBucket: "sports-f6789.firebasestorage.app",
+    messagingSenderId: "1089375819705",
+    appId: "1:1089375819705:web:af7492d1c285e78788c868",
+    measurementId: "G-QJE2HPWQ9Y"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth); // sign out from Firebase
+        localStorage.removeItem("loggedUser"); // clear local data
+        window.location.href = "index.html";
+      } catch (error) {
+        alert("Logout failed: " + error.message);
+        console.error(error);
+      }
+    });
+  }
+</script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
