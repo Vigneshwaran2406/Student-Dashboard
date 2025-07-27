@@ -813,8 +813,8 @@ body {
     transform: translateX(3px); 
 }
 .subject-table-container {
-    overflow-x: auto; 
-    width: 100%;
+
+    width: 90%;
 }
 
 #subjectsTable {
@@ -828,6 +828,8 @@ body {
 #subjectsTable td {
     font-size: 0.5em ;
     text-align: left;
+    padding: 5px 5px 5px 5px;
+    
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -863,10 +865,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px; /* Space between title and progress bar */
+    gap: 3px; /* Space between title and progress bar */
     width: 80%; /* Adjust width of each progress card */
     max-width: 600px; /* Max width for consistency */
-    padding: 15px 10px; /* Adjust padding for progress cards */
+    padding: 5px 5px 10px 5px; /* Adjust padding for progress cards */
 }
 
 
@@ -876,7 +878,7 @@ body {
 }
 
 .progress-bar-container {
-    width: 100%;
+    width: 70%;
     height: 15px; /* Height of the progress bar track */
     background-color: rgba(0, 0, 0, 0.3); /* Darker transparent track */
     border-radius: 12px; /* Rounded corners for the track */
@@ -910,7 +912,9 @@ body {
 
     .todo-input-container, #todoList {
         width: 95%;
+        
     }
+    
 
     #todoInput {
         font-size: 0.5em;
@@ -929,7 +933,7 @@ body {
     }
 
     .todo-item {
-        padding: 8px 10px;
+        padding: 10px 10px 15px 10px;
     }
 
     .todo-item .task-text, .todo-item.editing .edit-input {
